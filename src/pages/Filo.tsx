@@ -53,12 +53,12 @@ export const Filo: React.FC = () => {
   return (
     <div className="bg-brand-bgLight text-brand-textPrimary font-sans">
       {/* Header Banner */}
-      <section className="relative bg-brand-dark py-20 border-b border-brand-gold/30 text-left">
+      <section className="relative bg-brand-dark py-12 sm:py-20 border-b border-brand-gold/30 text-left">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold text-brand-gold uppercase tracking-widest block mb-2">Makine Parkuru</span>
-            <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight">Araç & İş Makinesi Filomuz</h1>
-            <p className="text-white/80 mt-4 text-base sm:text-lg">
+            <span className="text-[10px] sm:text-xs font-bold text-brand-gold uppercase tracking-widest block mb-1.5 sm:mb-2">Makine Parkuru</span>
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">Araç & İş Makinesi Filomuz</h1>
+            <p className="text-white/80 mt-2 sm:mt-4 text-xs sm:text-base md:text-lg">
               Periyodik bakımları yetkili servislerce yapılan, en zorlu şantiye şartlarında durmaksızın çalışan güçlü makine parkımız.
             </p>
           </div>
@@ -66,23 +66,23 @@ export const Filo: React.FC = () => {
       </section>
 
       {/* Grid List */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left">
             {machinery.map((item, idx) => (
-              <div key={idx} className="rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col justify-between">
+              <div key={idx} className="rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-md hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
-                  <div className="h-72 overflow-hidden relative">
+                  <div className="h-48 sm:h-72 overflow-hidden relative">
                     <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                   </div>
-                  <div className="p-8">
-                    <h3 className="text-xl font-black text-brand-dark mb-3">{item.title}</h3>
-                    <p className="text-brand-textSecondary text-xs sm:text-sm leading-relaxed mb-6">{item.desc}</p>
+                  <div className="p-5 sm:p-8">
+                    <h3 className="text-base sm:text-xl font-black text-brand-dark mb-2 sm:mb-3">{item.title}</h3>
+                    <p className="text-brand-textSecondary text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{item.desc}</p>
                     
-                    <div className="bg-brand-bgSecondary p-4 rounded-xl space-y-2 border border-gray-200">
+                    <div className="bg-brand-bgSecondary p-3.5 sm:p-4 rounded-xl space-y-1.5 sm:space-y-2 border border-gray-200">
                       {item.specs.map((sp, sIdx) => (
-                        <div key={sIdx} className="text-xs font-semibold text-brand-textPrimary flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
+                        <div key={sIdx} className="text-[11px] sm:text-xs font-semibold text-brand-textPrimary flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-gold shrink-0"></span>
                           <span>{sp}</span>
                         </div>
                       ))}
@@ -90,10 +90,10 @@ export const Filo: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="px-8 pb-8 pt-0">
+                <div className="px-5 pb-5 sm:px-8 sm:pb-8 pt-0">
                   <Link
                     to="/iletisim#teklif"
-                    className="w-full py-3 px-4 text-xs font-extrabold text-center block rounded-xl bg-brand-gold hover:bg-brand-goldHover text-brand-dark transition shadow"
+                    className="w-full py-2.5 sm:py-3 px-4 text-xs font-extrabold text-center block rounded-xl bg-brand-gold hover:bg-brand-goldHover text-brand-dark transition shadow"
                   >
                     Kiralama ve Fiyat Teklifi Al &rarr;
                   </Link>
