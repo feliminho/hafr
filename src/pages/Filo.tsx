@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Truck, HardHat, CheckCircle2, ArrowRight, Shield } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 export const Filo: React.FC = () => {
   const machinery = [
@@ -52,6 +53,11 @@ export const Filo: React.FC = () => {
 
   return (
     <div className="bg-brand-bgLight text-brand-textPrimary font-sans">
+      <SEO 
+        title="Araç & İş Makinesi Filomuz | Uçar Hafriyat ve Nakliyat"
+        description="20-45 tonluk paletli ekskavatörler, 8x4 damperli kamyonlar ve Lowbed ağır nakliye araçlarımız."
+        canonical="https://ucarhafriyat.com/filo"
+      />
       {/* Header Banner */}
       <section className="relative bg-brand-dark py-12 sm:py-20 border-b border-brand-gold/30 text-left">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">

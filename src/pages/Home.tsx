@@ -18,10 +18,11 @@ import {
   FileDown
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { Accordion02 } from "@/components/ui/accordion-04";
+import { SEO } from "@/components/SEO";
 
 export const Home: React.FC = () => {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const heroSlides = [
     {
@@ -160,6 +161,11 @@ export const Home: React.FC = () => {
 
   return (
     <div className="bg-brand-bgLight text-brand-textPrimary font-sans">
+      <SEO 
+        title="Uçar Hafriyat ve Nakliyat | Ağır Yük, Güvenli Zemin ve Yıkım Çözümleri"
+        description="20+ yıllık tecrübe, geniş ekskavatör ve 8x4 damper filosu ile temel kazısı, arazi ıslahı, bina yıkımı ve ağır nakliye çözümleri."
+        canonical="https://ucarhafriyat.com"
+      />
       
       {/* 1. ULTRA MODERN CORPORATE HERO SECTION (Responsive Typography Optimizasyonu) */}
       <section className="relative min-h-[85svh] sm:min-h-[92svh] lg:min-h-[780px] w-full bg-brand-dark overflow-hidden flex items-center">
@@ -514,37 +520,50 @@ export const Home: React.FC = () => {
 
       {/* 8. SIKÇA SORULAN SORULAR (SSS) */}
       <section className="py-14 sm:py-24 bg-brand-bgLight text-left">
-        <div className="w-full px-4 sm:px-8 lg:px-12 max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+        <div className="w-full px-4 sm:px-8 lg:px-12 max-w-4xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
             <div className="inline-flex items-center gap-2 text-brand-gold font-bold text-[10px] sm:text-xs sm:text-sm tracking-wider uppercase mb-1.5 sm:mb-2">
-              <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Merak Edilenler
+              <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Merak Edilenler & SSS
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark">
               Sıkça Sorulan Sorular
             </h2>
+            <p className="text-xs sm:text-sm text-brand-textSecondary mt-2">
+              Hafriyat, resmi döküm izinleri, kiralama ve saha operasyonlarımızla ilgili merak ettiğiniz soruların yanıtları.
+            </p>
           </div>
 
-          <div className="space-y-3 sm:space-y-4">
-            {faqs.map((faq, fIdx) => {
-              const isOpen = openFaq === fIdx;
-              return (
-                <div key={fIdx} className="bg-white rounded-xl sm:rounded-2xl border border-gray-200 overflow-hidden shadow-sm transition">
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : fIdx)}
-                    className="w-full p-4 sm:p-6 text-left flex justify-between items-center gap-3 font-bold text-xs sm:text-sm md:text-base text-brand-dark hover:text-brand-gold transition"
-                  >
-                    <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-brand-gold shrink-0" /> : <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 shrink-0" />}
-                  </button>
-                  {isOpen && (
-                    <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0 text-[11px] sm:text-xs md:text-sm text-brand-textSecondary leading-relaxed border-t border-gray-100 pt-2.5 sm:pt-3">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          {/* Radix UI & Animated Plus/Minus Accordion */}
+          <Accordion02 
+            items={[
+              {
+                id: "01",
+                title: "Hafriyat döküm izinleri ve yasal belgeler nasıl temin ediliyor?",
+                content: "Tüm projelerimizde Çevre, Şehircilik ve İklim Değişikliği Bakanlığı ve ilgili belediyeler tarafından onaylı resmi lisanslı hafriyat döküm sahalarıyla çalışıyoruz. Döküm fişleri, izin evrakları ve barkod kayıtları eksiksiz teslim edilmektedir."
+              },
+              {
+                id: "02",
+                title: "İş makineleri operatörlü mü yoksa operatörsüz mü kiralanıyor?",
+                content: "İhtiyacınıza göre hem G sınıfı ehliyetli ve sertifikalı uzman operatörlerimizle hem de operatörsüz/yakıtsız dönemlik (günlük, haftalık, aylık) kiralama seçenekleri sunuyoruz."
+              },
+              {
+                id: "03",
+                title: "Şantiyeye keşif ve metraj hesaplama hizmeti ücretli mi?",
+                content: "Hayır. Şirket sahibimiz Yasin Uçar ve saha mühendislerimiz projenizin bulunduğu araziye gelerek lazer kot ölçümü ve metraj analizini tamamen ÜCRETSİZ olarak gerçekleştirir."
+              },
+              {
+                id: "04",
+                title: "Bina yıkımında çevre güvenliği ve toz önleme nasıl sağlanıyor?",
+                content: "Yıkım esnasında yüksek basınçlı pülverize su sisleme sistemleri kullanılarak toz kalkması engellenir. Çevre binaların statik güvenliği korunarak hidrolik makaslarla kat kat kontrollü yıkım yapılır."
+              },
+              {
+                id: "05",
+                title: "Ağır nakliye ve damperli sevkiyat kapasiteniz nedir?",
+                content: "8x4 Hardox gövdeli yüksek tonajlı damperli tırlarımız ve 70 tona kadar taşıma kapasiteli Lowbed araçlarımızla günlük 2.000 tonun üzerinde malzeme ve agrega nakliyesini kesintisiz yönetebiliyoruz."
+              }
+            ]}
+            defaultValue="01"
+          />
         </div>
       </section>
 

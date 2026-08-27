@@ -16,6 +16,7 @@ import {
   UserCheck
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { SEO } from "@/components/SEO";
 
 export const Hizmetler: React.FC = () => {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number>(0);
@@ -164,6 +165,12 @@ export const Hizmetler: React.FC = () => {
 
   return (
     <div className="bg-brand-bgLight text-brand-textPrimary font-sans">
+      <SEO 
+        title="Kurumsal Hizmetlerimiz | Uçar Hafriyat ve Nakliyat"
+        description="Temel kazıları, stabilize dolgu, 8x4 damperli nakliyat, kontrollü kentsel dönüşüm bina yıkımı ve kiralık iş makineleri."
+        canonical="https://ucarhafriyat.com/hizmetler"
+      />
+      
       {/* Header Banner */}
       <section className="relative bg-brand-dark py-12 sm:py-20 border-b border-brand-gold/30 text-left">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">

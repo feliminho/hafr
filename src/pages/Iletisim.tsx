@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Phone, Mail, MapPin, PhoneCall, CheckCircle2 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { SEO } from "@/components/SEO";
 
 export const Iletisim: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -16,6 +17,11 @@ export const Iletisim: React.FC = () => {
 
   return (
     <div className="bg-brand-bgLight text-brand-textPrimary font-sans">
+      <SEO 
+        title="İletişim & Fiyat Teklifi Al | Uçar Hafriyat ve Nakliyat"
+        description="7/24 şantiye destek hattı: 0537 515 11 90. Projeniz için hemen ücretsiz keşif ve fiyat teklifi talep edin."
+        canonical="https://ucarhafriyat.com/iletisim"
+      />
       {/* Header Banner */}
       <section className="relative bg-brand-dark py-12 sm:py-20 border-b border-brand-gold/30 text-left">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">

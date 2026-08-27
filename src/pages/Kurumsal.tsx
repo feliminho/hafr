@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Award, ShieldCheck, Clock, Users, CheckCircle2, ArrowRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 export const Kurumsal: React.FC = () => {
   return (
     <div className="bg-brand-bgLight text-brand-textPrimary font-sans">
+      <SEO 
+        title="Kurumsal Profilimiz & Hakkımızda | Uçar Hafriyat ve Nakliyat"
+        description="20 yıllık sektör tecrübesi, iş sağlığı ve güvenliği standartları ve şirket sahibimiz Yasin Uçar liderliğinde sağlam taahhütler."
+        canonical="https://ucarhafriyat.com/kurumsal"
+      />
       {/* Header Banner */}
       <section className="relative bg-brand-dark py-12 sm:py-20 border-b border-brand-gold/30 text-left">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
