@@ -14,21 +14,32 @@ export interface CardItem {
   linkHref?: string;
   quoteHref?: string;
   tags?: string[];
+  fullDetails?: {
+    subtitle: string;
+    features: string[];
+    advantages: string[];
+    specs: string;
+  };
 }
 
 interface ExpandingCardsProps extends React.HTMLAttributes<HTMLUListElement> {
   items: CardItem[];
   defaultActiveIndex?: number;
+  activeIndex?: number;
+  onActiveChange?: (index: number) => void;
+  onDetailClick?: (index: number, item: CardItem) => void;
 }
 
 export const ExpandingCards = React.forwardRef<
   HTMLUListElement,
   ExpandingCardsProps
->(({ className, items, defaultActiveIndex = 0, ...props }, ref) => {
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(
+>(({ className, items, defaultActiveIndex = 0, activeIndex: controlledIndex, onActiveChange, onDetailClick, ...props }, ref) => {
+  const [internalActiveIndex, setInternalActiveIndex] = React.useState<number | null>(
     defaultActiveIndex,
   );
   
+  const activeIndex = controlledIndex !== undefined ? controlledIndex : internalActiveIndex;
+
   const [isDesktop, setIsDesktop] = React.useState(false);
 
   React.useEffect(() => {
@@ -57,7 +68,12 @@ export const ExpandingCards = React.forwardRef<
   }, [activeIndex, items.length, isDesktop]);
 
   const handleInteraction = (index: number) => {
-    setActiveIndex(index);
+    if (controlledIndex === undefined) {
+      setInternalActiveIndex(index);
+    }
+    if (onActiveChange) {
+      onActiveChange(index);
+    }
   };
 
   const handleLinkClick = () => {
@@ -139,20 +155,33 @@ export const ExpandingCards = React.forwardRef<
 
               {/* Active Buttons: Teklif Al & Detaylı Bilgi */}
               <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 sm:pt-2 opacity-0 transition-all duration-300 delay-300 ease-out group-data-[active=true]:opacity-100">
-                <Link
-                  to={item.quoteHref || "/iletisim#teklif"}
-                  onClick={handleLinkClick}
+                <a
+                  href={`https://wa.me/905375151190?text=${encodeURIComponent(`Merhaba Yasin Bey, Uçar Hafriyat bünyesindeki "${item.title}" hizmetiniz için fiyat teklifi ve detaylı bilgi almak istiyorum.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   className="rounded-lg bg-brand-gold hover:bg-brand-goldHover text-brand-dark px-3.5 py-2 text-xs font-black transition shadow flex items-center gap-1.5"
                 >
                   Teklif Al <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link
-                  to={item.linkHref || "/hizmetler"}
-                  onClick={handleLinkClick}
-                  className="rounded-lg border border-white/30 bg-black/50 hover:bg-black/80 hover:border-brand-gold hover:text-brand-gold text-white px-3.5 py-2 text-xs font-bold transition flex items-center gap-1.5"
+                </a>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onDetailClick) {
+                      onDetailClick(index, item);
+                    } else {
+                      handleInteraction(index);
+                      const el = document.getElementById("hizmet-detay-panel");
+                      if (el) {
+                        el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }
+                  }}
+                  className="rounded-lg border border-white/30 bg-black/50 hover:bg-black/80 hover:border-brand-gold hover:text-brand-gold text-white px-3.5 py-2 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
                 >
                   Detaylı Bilgi <FileText className="w-3.5 h-3.5" />
-                </Link>
+                </button>
               </div>
             </article>
           </li>

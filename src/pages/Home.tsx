@@ -67,31 +67,35 @@ export const Home: React.FC = () => {
 
   const featuredServices = [
     {
+      id: "hafriyat",
       title: "Hafriyat & Kazı Dolgu",
       desc: "Lidar ve lazer kot ölçümleriyle milimetrik temel kazıları, hafriyat tahliyesi ve stabilize dolgu mühendisliği.",
       icon: <Shovel className="w-6 h-6 sm:w-8 sm:h-8 text-brand-gold" />,
-      link: "/hizmetler",
+      link: "/hizmetler#hafriyat",
       tags: ["Temel Kazıları", "Tesviye", "Moloz Tahliyesi"]
     },
     {
+      id: "nakliye",
       title: "Ağır Yük & Damper Nakliyesi",
       desc: "Şantiyeler arası kum, mıcır, çakıl, agrega ve ağır makine lojistiğinde yüksek tonajlı kesintisiz taşıma.",
       icon: <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-brand-gold" />,
-      link: "/hizmetler",
+      link: "/hizmetler#nakliye",
       tags: ["Damperli Sevkiyat", "Lowbed Ağır Makine", "Agrega Taşımacılığı"]
     },
     {
+      id: "kiralama",
       title: "İş Makinesi Kiralama",
       desc: "20-45 tonluk ekskavatörler, loderler, dozer ve silindirler ile saatlik/günlük/aylık operatörlü kiralama.",
       icon: <HardHat className="w-6 h-6 sm:w-8 sm:h-8 text-brand-gold" />,
-      link: "/filo",
+      link: "/hizmetler#kiralama",
       tags: ["Paletli Ekskavatör", "Uzman Operatör", "7/24 Saha Servisi"]
     },
     {
+      id: "yikim",
       title: "Bina Yıkım & Kırım İşleri",
       desc: "Kentsel dönüşüm alanlarında toz bastırma sulama sistemleri eşliğinde kontrollü bina ve betonarme yıkımı.",
       icon: <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-brand-gold" />,
-      link: "/hizmetler",
+      link: "/hizmetler#yikim",
       tags: ["Hidrolik Makas", "Enkaz Tahliyesi", "İş Güvenliği"]
     }
   ];
@@ -151,11 +155,7 @@ export const Home: React.FC = () => {
   ];
 
   const handleLinkClick = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant"
-    });
+    // Hash yoksa en üste kaydır, hash varsa ilgili sayfadaki hash listener yönetecek
   };
 
   return (
@@ -400,16 +400,16 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. ŞANTİYE FOTOĞRAF GALERİSİ & E-KATALOG */}
+      {/* 6. ŞANTİYE FOTOĞRAF & VİDEO GALERİSİ */}
       <section className="py-14 sm:py-24 bg-brand-bgLight">
         <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-14 gap-3 sm:gap-6 text-left">
             <div>
               <div className="inline-flex items-center gap-2 text-brand-gold font-bold text-[10px] sm:text-xs sm:text-sm tracking-wider uppercase mb-1.5 sm:mb-2">
-                <span className="w-6 sm:w-8 h-[2px] bg-brand-gold"></span> Canlı Saha Görüntüleri
+                <span className="w-6 sm:w-8 h-[2px] bg-brand-gold"></span> Canlı Saha & Operasyon Görüntüleri
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-brand-dark tracking-tight">
-                Şantiye Operasyonlarımız
+                Şantiye & Araç Filomuz
               </h2>
             </div>
             
@@ -422,17 +422,50 @@ export const Home: React.FC = () => {
             </a>
           </div>
 
-          {/* Grid Gallery */}
+          {/* Grid Gallery (3 Gerçek Saha Görseli + 1 Canlı Saha Videosu) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {galleryImages.map((gal, gIdx) => (
-              <div key={gIdx} className="group relative rounded-2xl overflow-hidden shadow-md border border-gray-200 h-48 sm:h-64">
-                <img src={gal.img} alt={gal.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-5 text-left">
-                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-gold bg-black/60 px-2 py-0.5 rounded w-fit mb-1">{gal.tag}</span>
-                  <h4 className="text-white font-bold text-xs sm:text-sm">{gal.title}</h4>
-                </div>
+            <div className="group relative rounded-2xl overflow-hidden shadow-md border border-gray-200 h-56 sm:h-64">
+              <img src="/saha-1.jpeg" alt="Uçar Hafriyat Saha Operasyonu" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-5 text-left">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-gold bg-black/60 px-2 py-0.5 rounded w-fit mb-1">Saha İkmal</span>
+                <h4 className="text-white font-bold text-xs sm:text-sm">Şantiye Kazı & Taşıma</h4>
               </div>
-            ))}
+            </div>
+
+            <div className="group relative rounded-2xl overflow-hidden shadow-md border border-gray-200 h-56 sm:h-64">
+              <img src="/saha-2.jpeg" alt="Uçar Hafriyat Kamyon ve Makine Filosu" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-5 text-left">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-gold bg-black/60 px-2 py-0.5 rounded w-fit mb-1">Ağır Filo</span>
+                <h4 className="text-white font-bold text-xs sm:text-sm">Damperli Nakliyat Filosu</h4>
+              </div>
+            </div>
+
+            <div className="group relative rounded-2xl overflow-hidden shadow-md border border-gray-200 h-56 sm:h-64">
+              <img src="/saha-3.jpeg" alt="Uçar Hafriyat Zemin Kazı ve Yükleme" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-5 text-left">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-gold bg-black/60 px-2 py-0.5 rounded w-fit mb-1">Zemin Kazısı</span>
+                <h4 className="text-white font-bold text-xs sm:text-sm">Ekskavatör Yükleme Operasyonu</h4>
+              </div>
+            </div>
+
+            {/* Video Kartı */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-md border-2 border-brand-gold/40 h-56 sm:h-64 bg-black">
+              <video 
+                src="/saha-video.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+              />
+              <div className="absolute top-3 right-3 bg-brand-gold/90 text-brand-dark text-[10px] font-black uppercase px-2.5 py-1 rounded-full flex items-center gap-1 shadow">
+                <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span> Canlı Video
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex flex-col justify-end p-4 sm:p-5 text-left pointer-events-none">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-gold bg-black/60 px-2 py-0.5 rounded w-fit mb-1">Canlı Saha</span>
+                <h4 className="text-white font-bold text-xs sm:text-sm">Aktif Şantiye Çalışması</h4>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -45,6 +45,23 @@ export const Kurumsal: React.FC = () => {
                   <p className="text-[11px] sm:text-xs text-brand-textSecondary mt-1">A sınıfı iş güvenliği uzmanlarımızla kontrollü saha.</p>
                 </div>
               </div>
+
+              {/* Kurucu / Şirket Sahibi Kartı */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-brand-dark text-white border border-brand-gold/40 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] sm:text-xs uppercase font-bold text-brand-gold tracking-widest block">Şirket Sahibi & Genel Yönetim</span>
+                  <h3 className="text-lg sm:text-xl font-black text-white mt-0.5">Yasin UÇAR</h3>
+                  <p className="text-xs text-white/70 mt-1">20+ yıllık saha tecrübesiyle anahtar teslim hafriyat taahhütleri.</p>
+                </div>
+                <a
+                  href="https://wa.me/905375151190?text=Merhaba%20Yasin%20Bey,%20U%C3%A7ar%20Hafriyat%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-brand-gold hover:bg-brand-goldHover text-brand-dark text-xs font-black transition shrink-0 ml-3"
+                >
+                  Görüşme Başlat
+                </a>
+              </div>
             </div>
 
             <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-brand-dark">
